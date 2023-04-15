@@ -6,7 +6,6 @@ from scrappo.settings.manager import Manager
 
 
 def main():
-    print('program entrypoint')
     arguments = Manager().configure_arguments()
 
     validate_settings(arguments['Settings'])

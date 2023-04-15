@@ -11,7 +11,6 @@ class Settings(Arguments):
                              full_name='--urls',
                              help_message='A list of URLs of the videos to download or the path of a .txt file containing a list of URLs.',
                              metavar="",
-                             # to_save=True,
                              default=[])
 
         self.output = Argument(name='output',
@@ -19,7 +18,6 @@ class Settings(Arguments):
                                full_name='--output',
                                help_message='The output folder path in which the videos will be downloaded.',
                                metavar="",
-                               # to_save=True,
                                default='')
 
         self.type = Argument(name='type',
@@ -30,7 +28,6 @@ class Settings(Arguments):
                                           '"movies".',
                              metavar="",
                              choices=['movies', 'series'],
-                             # to_save=True,
                              default='movies')
 
         self.shutdown = Argument(name='shutdown',
