@@ -19,12 +19,9 @@ class File:
         self.file_in_use.writelines(lines)
         self.close()
 
-    def set_lines(self):
-        self.__lines = open(self.path).readlines()
-
     def get_lines(self):
+        self.__lines = open(self.path).readlines()
         return self.__lines
 
     def is_empty(self):
-        self.set_lines()
         return len(self.get_lines()) == 0
