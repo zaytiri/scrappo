@@ -12,6 +12,7 @@ class Processor:
         self.urls = arguments.urls.value
         self.output = arguments.output.value
         self.type = arguments.type.value
+        self.separate = arguments.separate.value
 
     def process(self):
         urls = UrlParser(self.urls).parse()
@@ -24,7 +25,7 @@ class Processor:
         if self.type == 'series':
             videos = Series(urls, path_main)
         elif self.type == 'movies':
-            videos = Movies(urls, path_main)
+            videos = Movies(urls, path_main, self.separate)
 
         errors = videos.download()
 

@@ -34,10 +34,18 @@ class Settings(Arguments):
                              choices=['movies', 'series'],
                              default='movies')
 
+        self.separate = Argument(name='separate',
+                                 abbreviation_name='',
+                                 full_name='--separate',
+                                 help_message='If enabled, it will separate every movie into his own folder. Default is disabled. True: --separate | '
+                                              'False: --no-separate',
+                                 metavar="",
+                                 default=False)
+
         self.shutdown = Argument(name='shutdown',
                                  abbreviation_name='',
                                  full_name='--shutdown',
-                                 help_message='Enable/disable if computer will shutdown when the program has ended: (default is disabled)'
+                                 help_message='Enable/disable if computer will shutdown when the program has ended. Default is disabled.'
                                               'True: --shutdown | False: --no-shutdown',
                                  metavar="",
                                  default=False)
@@ -64,6 +72,11 @@ class Settings(Arguments):
                                  type=str,
                                  choices=self.type.choices,
                                  help=self.type.help_message,
+                                 default=argparse.SUPPRESS)
+
+        args_parser.add_argument(self.separate.full_name,
+                                 action=argparse.BooleanOptionalAction,
+                                 help=self.separate.help_message,
                                  default=argparse.SUPPRESS)
 
         args_parser.add_argument(self.shutdown.full_name,

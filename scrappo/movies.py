@@ -11,6 +11,8 @@ class Movies:
 
     def download(self):
         errors = []
+    def __init__(self, urls, output, separate):
+        self.separate = separate
 
         # returns a flat list
         urls = [item for sublist in self.urls for item in sublist]
@@ -21,6 +23,11 @@ class Movies:
             url = movie['url']
             if not name:
                 name = 'movie' + str(index+1)
+            parent_path = self.output
+            if self.separate:
+                parent_path = os.path.join(self.output, 'movie' + str(index + 1))
+                if not os.path.isdir(parent_path):
+                    os.mkdir(parent_path)
 
             path = os.path.join(self.output, name + '.mp4')
             if os.path.isfile(path):
