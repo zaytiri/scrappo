@@ -28,7 +28,7 @@ setup(
         "Programming Language :: Python :: 3",
     ],
     keywords="video, download, tool, scrapping, scrap, cli, url python",
-    package_data={'scrappo': ['progsettings.yaml']},
+    package_data={'scrappo': ['version/progsettings.yaml']},
     packages=["scrappo", "scrappo.utils", "scrappo.version", "scrappo.settings"],
     python_requires=">=3.10.6",
     install_requires=[
