@@ -22,6 +22,6 @@ class Downloader:
 
         end = time.time()
         show("Timelapse: " + str(((end - start) * 10 ** 3) / 1000 / 60) + " minutes")
-        show(self.url + ' successfully downloaded!')
+        show(self.path + ' successfully downloaded!')
 
         return True

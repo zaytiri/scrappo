@@ -19,8 +19,11 @@ class Video:
     def process_urls(self):
         raise NotImplementedError('To be implemented')
 
-    def add_folder(self, name):
-        parent_path = os.path.join(self.output, name)
+    def add_folder(self, name, root=''):
+        if not root:
+            root = self.output
+
+        parent_path = os.path.join(root, name)
         if not os.path.isdir(parent_path):
             os.mkdir(parent_path)
         return parent_path

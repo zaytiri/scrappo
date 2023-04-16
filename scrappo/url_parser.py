@@ -1,22 +1,30 @@
 import os
 
 from scrappo.utils.file import File
+from scrappo.utils.log import throw
 
 
 class UrlParser:
     def __init__(self, urls):
         self.urls = urls
+        self.file_name = ''
 
     def parse(self):
-        if not os.path.isfile(self.urls[0]):
-            return self.parse_urls(self.urls)
+        if os.path.isdir(os.path.dirname(self.urls[0])):
+            try:
+                urls_file = File(self.urls[0])
 
-        try:
-            urls_file = File(self.urls[0])
-            return self.parse_urls(urls_file.get_lines())
+                # resolve file name without extension
+                name = os.path.basename(self.urls[0]).split('.')
+                name.pop()
+                self.file_name = '.'.join(name)
 
-        except FileNotFoundError:
-            raise SystemError(self.urls + ' was not found.')
+                return self.parse_urls(urls_file.get_lines())
+
+            except FileNotFoundError:
+                throw(self.urls[0] + ' was not found.')
+
+        return self.parse_urls(self.urls)
 
     @staticmethod
     def split_url(url):

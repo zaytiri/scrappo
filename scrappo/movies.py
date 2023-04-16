@@ -27,6 +27,6 @@ class Movies(Video):
             if self.file_exists(path):
                 continue
 
-            successful = Downloader(url, path)
+            successful = Downloader(url, path).download_video()
 
             self.add_errors(successful, path, url)

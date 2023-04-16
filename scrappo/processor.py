@@ -15,7 +15,8 @@ class Processor:
         self.separate = arguments.separate.value
 
     def process(self):
-        urls = UrlParser(self.urls).parse()
+        parser = UrlParser(self.urls)
+        urls = parser.parse()
 
         path_main = self.output
         if not os.path.isdir(path_main):
@@ -23,7 +24,7 @@ class Processor:
 
         videos = None
         if self.type == 'series':
-            videos = Series(urls, path_main)
+            videos = Series(urls, path_main, parser.file_name)
         elif self.type == 'movies':
             videos = Movies(urls, path_main, self.separate)
 
