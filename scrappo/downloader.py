@@ -17,7 +17,7 @@ class Downloader:
                 for chunk in r.iter_content(chunk_size=1024 * 1024):
                     f.write(chunk)
         except (requests.exceptions.RequestException, OSError, IOError):
-            show('Something wrong opening while opening/downloading the following URL:\n\t' + self.url + '(SKIPPED)')
+            show('Something wrong happened while opening/downloading the following URL:\n\t' + self.url + '(SKIPPED)')
             return False
 
         end = time.time()
