@@ -3,13 +3,17 @@ import argparse
 from margument.argument import Argument
 from margument.arguments import Arguments
 
+from scrappo.utils.directory import Directory
+from scrappo.utils.log import throw
+
 
 class Settings(Arguments):
     def __init__(self):
         self.urls = Argument(name='urls',
                              abbreviation_name='-u',
                              full_name='--urls',
-                             help_message='A list of URLs of the videos to download or the path of a .txt file containing a list of URLs.',
+                             help_message='A list of URLs of the videos to download or the path of a .txt file containing a list of URLs. More '
+                                          'details on creating the file in the README.md',
                              metavar="",
                              default=[])
 
@@ -58,6 +62,7 @@ class Settings(Arguments):
 
         args_parser.add_argument(self.type.abbreviation_name, self.type.full_name,
                                  type=str,
+                                 choices=self.type.choices,
                                  help=self.type.help_message,
                                  default=argparse.SUPPRESS)
 
@@ -72,5 +77,10 @@ class Settings(Arguments):
                                  default=argparse.SUPPRESS)
 
     def process_arguments(self, settings):
-        # todo validate output path
-        pass
+        self.validate_path(settings[0].user_arguments)
+
+    def validate_path(self, user_args):
+        if self.output.name in user_args:
+            argument_path = Directory(user_args.output)
+            if not argument_path.exists():
+                throw(user_args.output + ' path does not exist.')
