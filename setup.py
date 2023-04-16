@@ -11,7 +11,7 @@ version = get_version()
 setup(
     name="scrappo",
     version=version,
-    description="",
+    description="Download any video from a specific URL.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/zaytiri/scrappo",
