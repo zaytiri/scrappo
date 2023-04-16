@@ -50,26 +50,22 @@ class Settings(Arguments):
                                  metavar="",
                                  default=False)
 
-        self.run = Argument(name='run',
-                            abbreviation_name='-r',
-                            full_name='--run',
-                            help_message='If specified, it will start the resizing process with configured settings.',
-                            metavar="",
-                            default=False)
-
     def add_arguments(self, args_parser):
         args_parser.add_argument(self.urls.abbreviation_name, self.urls.full_name,
                                  nargs='*',
+                                 required=True,
                                  help=self.urls.help_message,
                                  default=argparse.SUPPRESS)
 
         args_parser.add_argument(self.output.abbreviation_name, self.output.full_name,
                                  type=str,
+                                 required=True,
                                  help=self.output.help_message,
                                  default=argparse.SUPPRESS)
 
         args_parser.add_argument(self.type.abbreviation_name, self.type.full_name,
                                  type=str,
+                                 required=True,
                                  choices=self.type.choices,
                                  help=self.type.help_message,
                                  default=argparse.SUPPRESS)
@@ -82,11 +78,6 @@ class Settings(Arguments):
         args_parser.add_argument(self.shutdown.full_name,
                                  action=argparse.BooleanOptionalAction,
                                  help=self.shutdown.help_message,
-                                 default=argparse.SUPPRESS)
-
-        args_parser.add_argument(self.run.abbreviation_name, self.run.full_name,
-                                 action='store_true',
-                                 help=self.run.help_message,
                                  default=argparse.SUPPRESS)
 
     def process_arguments(self, settings):
