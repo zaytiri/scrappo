@@ -2,37 +2,26 @@ import os
 
 from scrappo.downloader import Downloader
 from scrappo.utils.log import show
+from scrappo.video import Video
 
 
-class Series:
+class Series(Video):
     def __init__(self, urls, output):
-        self.urls = urls
-        self.output = output
+        super().__init__(urls, output)
 
-    def download(self):
-        errors = []
-
+    def process_urls(self):
         show('Downloading serie...')
         for i, season in enumerate(self.urls):
-            season_folder = os.path.join(self.output, 'season' + str(i+1))
-            if not os.path.isdir(season_folder):
-                os.mkdir(season_folder)
+            season_folder = self.add_folder('season' + str(i+1))
 
             for j, episode in enumerate(season):
-                name = episode['name']
                 url = episode['url']
-                if not name:
-                    name = 'episode' + str(j+1)
+                name = self.resolve_video_name(episode['name'], 'episode' + str(j + 1))
 
                 path = os.path.join(season_folder, name + '.mp4')
-                if os.path.isfile(path):
-                    show('Skipping existing video...')
+                if self.file_exists(path):
                     continue
 
                 successful = Downloader(url, path)
 
-                if not successful:
-                    error = {'path': path, 'url': url}
-                    errors.append(error)
-
-        return errors
+                self.add_errors(successful, path, url)

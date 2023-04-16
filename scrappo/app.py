@@ -10,8 +10,8 @@ def main():
 
     validate_settings(arguments['Settings'])
 
-    video = Processor(arguments['Settings'])
-    video.process()
+    videos = Processor(arguments['Settings'])
+    videos.process()
 
     if arguments['Settings'].shutdown.value:
         subprocess.run(["shutdown", "-s"])
