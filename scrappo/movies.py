@@ -12,6 +12,7 @@ class Movies:
     def download(self):
         errors = []
 
+        # returns a flat list
         urls = [item for sublist in self.urls for item in sublist]
 
         show('Downloading movies...')
