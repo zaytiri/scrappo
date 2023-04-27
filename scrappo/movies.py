@@ -14,10 +14,10 @@ class Movies(Video):
         # returns a flat list
         urls = [item for sublist in self.urls for item in sublist]
 
-        show('Downloading movies...')
         for index, movie in enumerate(urls):
             url = movie['url']
             name = self.resolve_video_name(movie['name'], 'movie' + str(index + 1))
+            show('Downloading ' + name + '...')
 
             parent_path = self.output
             if self.separate:

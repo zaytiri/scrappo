@@ -35,6 +35,7 @@ setup(
         "PyYAML~=6.0",
         "margument>=1.1.1",
         "requests~=2.28.2",
+        "progress~=1.6",
     ],
     entry_points={
         "console_scripts": [

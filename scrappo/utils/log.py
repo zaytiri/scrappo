@@ -7,10 +7,10 @@ def throw(message):
     sys.exit()
 
 
-def show(message, to_exit=False, with_date=True):
+def show(message, to_exit=False, with_date=True, end='\n'):
     if with_date:
         print('[' + str(datetime.utcnow()) + ']', end='')
-    print('\t>>!:' + message)
+    print('\t>>!:' + message, end=end)
 
     if to_exit:
         sys.exit()
