@@ -24,14 +24,15 @@ It's possible to also distinguish between a series or movies. The difference bet
 
 ## Features
 
-| Feature                                                                           |
-|:----------------------------------------------------------------------------------|
-| can be input a .txt file containing a list of URLs                                |
-| download movies, series or related content                                        |
-| series will be separate into season folders                                       |
-| movies can also be separated in their own folder                                  |
-| videos already downloaded will be skipped                                         |
-| any errors regarding the videos will not stop program and will appear in the end. |
+| Feature                                                                          |
+|:---------------------------------------------------------------------------------|
+| can be input a .txt file containing a list of URLs                               |
+| download movies, series or related content                                       |
+| series will be separate into season folders                                      |
+| movies can also be separated in their own folder                                 |
+| videos already downloaded will be skipped                                        |
+| any errors regarding the videos will not stop program and will appear in the end |
+| progress bar while downloading                                                   |
 
 
 Any new features are **_very_** welcomed.
