@@ -31,7 +31,7 @@ class Video:
     @staticmethod
     def file_exists(path):
         if os.path.isfile(path):
-            show('Skipping existing video...')
+            show('Skipping existing video...\n')
             return True
         return False
 
