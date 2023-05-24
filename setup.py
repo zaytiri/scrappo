@@ -34,7 +34,7 @@ setup(
     install_requires=[
         "PyYAML~=6.0",
         "margument>=1.1.1",
-        "requests~=2.31.0",
+        "requests>=2.31.0",
         "progress~=1.6",
     ],
     entry_points={
