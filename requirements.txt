@@ -1,5 +1,5 @@
 setuptools>=65.5.1
 PyYAML~=6.0
 margument>=1.1.1
-requests>=2.28.2
+requests>=2.31.0
 progress~=1.6
